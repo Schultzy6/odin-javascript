@@ -22,7 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   justify-items: center;
-  gap: 4rem;
+  gap: 0.5rem;
   font-size: 2rem;
 }
 
@@ -47,7 +47,7 @@ body {
   background-color: red;
   justify-content: center;
   align-items: center;
-  border-radius: 10rem;
+  border-radius: 1rem;
   width: 10%;
   text-align: center;
   transition: 100ms;

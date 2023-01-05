@@ -4,6 +4,7 @@ const yourScore = document.querySelector('[data-your-score]');
 const computerScore = document.querySelector('[data-computer-score]');
 const restartButton = document.querySelector('[data-restart-button]');
 const selectionHistory = document.getElementsByClassName('result-selection');
+const delay = ms => new Promise(res => setTimeout(res, ms));
 const SELECTIONS = [
   {
     name: 'rock',
@@ -23,13 +24,7 @@ const SELECTIONS = [
 ];
 
 restartButton.addEventListener('click', e => {
-  computerScore.innerText = 0;
-  yourScore.innerText = 0;
-  console.log(selectionHistory.length);
-  while (selectionHistory.length > 0) {
-    let selections = selectionHistory[0];
-    selections.remove();
-  }
+  removeSelection();
 });
 
 selectionButtons.forEach(selectionButton => {
@@ -39,6 +34,15 @@ selectionButtons.forEach(selectionButton => {
     makeSelection(selection);
   });
 });
+
+function removeSelection() {
+  while (selectionHistory.length > 0) {
+    let selections = selectionHistory[0];
+    selections.remove();
+  }
+  computerScore.innerText = 0;
+  yourScore.innerText = 0;
+}
 
 function addSelectionResult(selection, winner) {
   const div = document.createElement('div');
@@ -55,8 +59,23 @@ function makeSelection(selection) {
 
   addSelectionResult(computerSelection, computerWinner);
   addSelectionResult(selection, playerWinner);
-  if (playerWinner) incrementScore(yourScore);
-  if (computerWinner) incrementScore(computerScore);
+
+  if (playerWinner) {
+    if (yourScore.innerText != 3) {
+      incrementScore(yourScore);
+      if (yourScore.innerText == 3) {
+        yourScore.innerText = 'Winner';
+      }
+    }
+  }
+  if (computerWinner) {
+    if (computerScore.innerText != 3) {
+      incrementScore(computerScore);
+      if (computerScore.innerText == 3) {
+        yourScore.innerText = 'Winner';
+      }
+    }
+  }
 }
 
 function isWinner(selection, oppSelection) {
