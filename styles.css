@@ -1,0 +1,58 @@
+body {
+  background-color: #ccc;
+}
+
+.selections {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  font-size: 4rem;
+  gap: 2rem;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.selection:hover {
+  transform: scale(1.2);
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  gap: 4rem;
+  font-size: 2rem;
+}
+
+.result-selection {
+  opacity: 0.5;
+}
+
+.result-selection.winner {
+  opacity: 1;
+  font-size: 2rem;
+}
+
+.results-score {
+  font-size: 1.25rem;
+  margin-left: 2rem;
+}
+
+.restart-button {
+  display: flex;
+  border: solid;
+  margin: auto;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rem;
+  width: 10%;
+  text-align: center;
+  transition: 100ms;
+}
+
+.restart-button:hover {
+  transform: scale(1.1);
+}
