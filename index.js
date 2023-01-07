@@ -72,7 +72,7 @@ function makeSelection(selection) {
     if (computerScore.innerText != 3) {
       incrementScore(computerScore);
       if (computerScore.innerText == 3) {
-        yourScore.innerText = 'Winner';
+        computerScore.innerText = 'Winner';
       }
     }
   }
